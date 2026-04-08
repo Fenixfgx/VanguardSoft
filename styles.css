@@ -699,20 +699,20 @@ input, textarea {
 
 .about__card-stack {
     position: relative;
-    height: 300px;
+    height: 260px;
 }
 
 .about__card {
     position: absolute;
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 20px 28px;
+    gap: 12px;
+    padding: 16px 22px;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     backdrop-filter: blur(10px);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 500;
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
 }
@@ -726,8 +726,8 @@ input, textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: var(--radius-md);
     background: rgba(var(--color-accent-rgb), 0.1);
     color: var(--color-accent);
@@ -741,13 +741,13 @@ input, textarea {
 }
 
 .about__card--2 {
-    top: 105px;
+    top: 95px;
     right: 5%;
     animation: floatCard2 7s ease-in-out infinite;
 }
 
 .about__card--3 {
-    bottom: 20px;
+    bottom: 10px;
     left: 15%;
     animation: floatCard3 5s ease-in-out infinite;
 }
@@ -772,25 +772,29 @@ input, textarea {
 }
 
 .about__text {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: var(--color-text-secondary);
-    line-height: 1.8;
-    margin-bottom: 16px;
+    line-height: 1.7;
+    margin-bottom: 12px;
 }
 
 .about__highlights {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 32px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
 }
 
 .about__highlight {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 0.95rem;
+    gap: 8px;
+    font-size: 0.85rem;
     font-weight: 500;
+    padding: 8px 14px;
+    background: rgba(var(--color-accent-rgb), 0.04);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.1);
+    border-radius: 100px;
 }
 
 .about__highlight-icon {
@@ -1982,7 +1986,7 @@ input, textarea {
     }
 
     .about__card-stack {
-        height: 320px;
+        height: 260px;
     }
 
     .services__grid {
