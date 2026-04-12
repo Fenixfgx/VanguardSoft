@@ -7,35 +7,35 @@
    CSS CUSTOM PROPERTIES
    ---------------------------------------------------------------- */
 :root {
-    /* Colors — Light Apple-inspired palette */
+    /* Colors — Dark editorial palette inspired by Anubi.io */
     --color-black:       #000000;
-    --color-bg:          #FFFFFF;
-    --color-bg-alt:      #F5F5F7;
-    --color-surface:     #FFFFFF;
-    --color-surface-alt: #FAFAFA;
-    --color-border:      #E0E0E0;
-    --color-border-light:#D2D2D7;
-    --color-gray-dark:   #86868B;
-    --color-gray:        #6E6E73;
-    --color-gray-light:  #515154;
+    --color-bg:          #0A0A0A;
+    --color-bg-alt:      #111111;
+    --color-surface:     #161616;
+    --color-surface-alt: #1A1A1A;
+    --color-border:      rgba(255, 255, 255, 0.08);
+    --color-border-light:rgba(255, 255, 255, 0.05);
+    --color-gray-dark:   #555555;
+    --color-gray:        #777777;
+    --color-gray-light:  #999999;
     --color-white:       #FFFFFF;
-    --color-white-soft:  #1D1D1F;
+    --color-white-soft:  #F0F0F0;
 
     /* Text hierarchy */
-    --color-text-primary:   #1D1D1F;
-    --color-text-secondary: #515154;
-    --color-text-tertiary:  #6E6E73;
-    --color-text-quaternary:#86868B;
+    --color-text-primary:   #F0F0F0;
+    --color-text-secondary: #A0A0A0;
+    --color-text-tertiary:  #777777;
+    --color-text-quaternary:#555555;
 
-    /* Accent */
-    --color-accent:      #0071E3;
-    --color-accent-dark: #005BB5;
-    --color-accent-rgb:  0, 113, 227;
+    /* Accent — refined blue for premium feel */
+    --color-accent:      #4A90D9;
+    --color-accent-dark: #3A7BC8;
+    --color-accent-rgb:  74, 144, 217;
 
-    /* Gradients */
-    --gradient-accent:   linear-gradient(135deg, #0071E3 0%, #2997FF 50%, #6C5CE7 100%);
-    --gradient-accent-h: linear-gradient(90deg, #0071E3 0%, #2997FF 50%, #6C5CE7 100%);
-    --gradient-glow:     radial-gradient(circle, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 70%);
+    /* Gradients — premium blue-black */
+    --gradient-accent:   linear-gradient(135deg, #E8EDF2 0%, #4A90D9 50%, #1B2A4A 100%);
+    --gradient-accent-h: linear-gradient(90deg, #E8EDF2 0%, #4A90D9 50%, #1B2A4A 100%);
+    --gradient-glow:     radial-gradient(circle, rgba(74, 144, 217, 0.06) 0%, transparent 70%);
 
     /* Typography */
     --font-family:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -43,7 +43,7 @@
     /* Sizing */
     --container-max:     1200px;
     --container-padding: 24px;
-    --section-padding:   36px;
+    --section-padding:   80px;
     --navbar-height:     72px;
 
     /* Transitions */
@@ -81,7 +81,12 @@ html {
 
 body {
     font-family: var(--font-family);
-    background-color: var(--color-bg);
+    background: #000000;
+    --gradient-x: 50%;
+    --gradient-y: 0%;
+    background-image:
+        radial-gradient(ellipse 120% 60% at var(--gradient-x) var(--gradient-y), #E8EDF2 0%, #B8CCE0 8%, #4A6FA5 18%, #1B2A4A 32%, #0D1520 48%, #060A10 62%, #000000 80%);
+    background-attachment: fixed;
     color: var(--color-text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -119,8 +124,8 @@ input, textarea {
 }
 
 ::selection {
-    background: rgba(var(--color-accent-rgb), 0.15);
-    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
 }
 
 /* ----------------------------------------------------------------
@@ -160,17 +165,17 @@ input, textarea {
 .section__header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 24px;
+    margin: 0 auto 32px;
 }
 
 .section__label {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--color-accent);
-    margin-bottom: 8px;
+    letter-spacing: 4px;
+    color: #7EB4E8;
+    margin-bottom: 12px;
 }
 
 .section__title {
@@ -196,7 +201,7 @@ input, textarea {
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: var(--color-bg);
+    background: #0A0A0A;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,7 +264,7 @@ input, textarea {
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
-    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(74, 144, 217, 0.03) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease;
     opacity: 0;
@@ -287,10 +292,10 @@ input, textarea {
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(6, 10, 18, 0.8);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 0 rgba(74, 144, 217, 0.06);
 }
 
 .navbar__container {
@@ -317,21 +322,21 @@ input, textarea {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: var(--color-text-primary);
+    background: #FFFFFF;
     font-weight: 900;
     font-size: 1.1rem;
-    color: var(--color-white);
+    color: #0A0A0A;
 }
 
 .navbar__name {
     font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: var(--color-text-primary);
+    color: #F0F0F0;
 }
 
 .navbar__name--accent {
-    color: var(--color-accent);
+    color: #7EB4E8;
 }
 
 .navbar__links {
@@ -351,19 +356,19 @@ input, textarea {
 }
 
 .navbar__link:hover {
-    color: var(--color-text-primary);
-    background: rgba(0, 0, 0, 0.04);
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .navbar__link--cta {
-    background: var(--color-accent);
-    color: var(--color-white) !important;
+    background: linear-gradient(135deg, #4A90D9, #3A6FB5);
+    color: #FFFFFF !important;
     font-weight: 600;
     padding: 8px 20px;
 }
 
 .navbar__link--cta:hover {
-    background: var(--color-accent-dark) !important;
+    background: linear-gradient(135deg, #5A9DE6, #4A90D9) !important;
 }
 
 /* Hamburger */
@@ -378,7 +383,7 @@ input, textarea {
 .navbar__toggle span {
     width: 22px;
     height: 2px;
-    background: var(--color-text-primary);
+    background: #F0F0F0;
     border-radius: 2px;
     transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
@@ -400,7 +405,7 @@ input, textarea {
     position: fixed;
     inset: 0;
     z-index: 999;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(10, 10, 10, 0.97);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     display: flex;
@@ -438,7 +443,7 @@ input, textarea {
 }
 
 .mobile-menu__link--cta {
-    color: var(--color-accent);
+    color: #7EB4E8;
 }
 
 /* ----------------------------------------------------------------
@@ -452,6 +457,7 @@ input, textarea {
     position: relative;
     overflow: hidden;
     padding: 120px 0 80px;
+    background: transparent;
 }
 
 .hero__particles {
@@ -465,8 +471,8 @@ input, textarea {
     inset: 0;
     z-index: 0;
     background-image:
-        linear-gradient(rgba(var(--color-accent-rgb), 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(var(--color-accent-rgb), 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
@@ -487,13 +493,13 @@ input, textarea {
     gap: 8px;
     padding: 8px 20px;
     border-radius: 100px;
-    background: rgba(var(--color-accent-rgb), 0.08);
-    border: 1px solid rgba(var(--color-accent-rgb), 0.15);
-    font-size: 0.8rem;
+    background: rgba(74, 144, 217, 0.08);
+    border: 1px solid rgba(74, 144, 217, 0.2);
+    font-size: 0.7rem;
     font-weight: 600;
-    color: var(--color-accent);
+    color: #7EB4E8;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-bottom: 32px;
 }
 
@@ -501,13 +507,13 @@ input, textarea {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--color-accent);
+    background: #4A90D9;
     animation: dotPulse 2s ease-in-out infinite;
 }
 
 @keyframes dotPulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0.4); }
-    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(var(--color-accent-rgb), 0); }
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74, 144, 217, 0.4); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(74, 144, 217, 0); }
 }
 
 .hero__title {
@@ -557,26 +563,26 @@ input, textarea {
 }
 
 .btn--primary {
-    background: var(--color-accent);
-    color: var(--color-white);
-    box-shadow: 0 4px 20px rgba(var(--color-accent-rgb), 0.25);
+    background: linear-gradient(135deg, #4A90D9, #3A6FB5);
+    color: #FFFFFF;
+    box-shadow: 0 4px 24px rgba(74, 144, 217, 0.3);
 }
 
 .btn--primary:hover {
-    background: var(--color-accent-dark);
-    box-shadow: 0 6px 30px rgba(var(--color-accent-rgb), 0.35);
+    background: linear-gradient(135deg, #5A9DE6, #4A90D9);
+    box-shadow: 0 8px 36px rgba(74, 144, 217, 0.4);
     transform: translateY(-2px);
 }
 
 .btn--ghost {
     background: transparent;
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    color: #E0E8F0;
+    border: 1px solid rgba(74, 144, 217, 0.25);
 }
 
 .btn--ghost:hover {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: var(--color-text-tertiary);
+    background: rgba(74, 144, 217, 0.08);
+    border-color: rgba(74, 144, 217, 0.45);
     transform: translateY(-2px);
 }
 
@@ -672,7 +678,7 @@ input, textarea {
 .hero__scroll-line {
     width: 1px;
     height: 60px;
-    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    background: linear-gradient(to bottom, rgba(74, 144, 217, 0.5), transparent);
     animation: scrollLine 2s ease-in-out infinite;
 }
 
@@ -708,10 +714,10 @@ input, textarea {
     align-items: center;
     gap: 12px;
     padding: 16px 22px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: rgba(14, 20, 32, 0.7);
+    border: 1px solid rgba(74, 144, 217, 0.1);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
     font-size: 0.88rem;
     font-weight: 500;
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
@@ -719,7 +725,8 @@ input, textarea {
 
 .about__card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3),
+                0 0 40px rgba(74, 144, 217, 0.05);
 }
 
 .about__card-icon {
@@ -729,8 +736,8 @@ input, textarea {
     width: 40px;
     height: 40px;
     border-radius: var(--radius-md);
-    background: rgba(var(--color-accent-rgb), 0.1);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.1);
+    color: #7EB4E8;
     flex-shrink: 0;
 }
 
@@ -792,8 +799,8 @@ input, textarea {
     font-size: 0.85rem;
     font-weight: 500;
     padding: 8px 14px;
-    background: rgba(var(--color-accent-rgb), 0.04);
-    border: 1px solid rgba(var(--color-accent-rgb), 0.1);
+    background: rgba(74, 144, 217, 0.05);
+    border: 1px solid rgba(74, 144, 217, 0.12);
     border-radius: 100px;
 }
 
@@ -804,8 +811,8 @@ input, textarea {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: rgba(var(--color-accent-rgb), 0.1);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.1);
+    color: #7EB4E8;
     flex-shrink: 0;
 }
 
@@ -813,7 +820,8 @@ input, textarea {
    SERVICES
    ---------------------------------------------------------------- */
 .services {
-    background: var(--color-bg-alt);
+    background: rgba(10, 16, 28, 0.6);
+    backdrop-filter: blur(2px);
 }
 
 .services__grid {
@@ -824,11 +832,12 @@ input, textarea {
 
 .service-card {
     position: relative;
-    padding: 28px 24px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    padding: 32px 28px;
+    background: rgba(14, 20, 32, 0.65);
+    border: 1px solid rgba(74, 144, 217, 0.08);
     border-radius: var(--radius-xl);
     overflow: hidden;
+    backdrop-filter: blur(12px);
     transition: transform var(--transition-medium), 
                 border-color var(--transition-medium),
                 box-shadow var(--transition-medium);
@@ -837,9 +846,9 @@ input, textarea {
 
 .service-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(var(--color-accent-rgb), 0.3);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08),
-                0 0 40px rgba(var(--color-accent-rgb), 0.04);
+    border-color: rgba(74, 144, 217, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4),
+                0 0 60px rgba(74, 144, 217, 0.05);
 }
 
 .service-card__glow {
@@ -864,14 +873,14 @@ input, textarea {
     width: 52px;
     height: 52px;
     border-radius: var(--radius-lg);
-    background: rgba(var(--color-accent-rgb), 0.08);
-    color: var(--color-accent);
-    margin-bottom: 16px;
+    background: rgba(74, 144, 217, 0.08);
+    color: #7EB4E8;
+    margin-bottom: 20px;
     transition: background var(--transition-fast);
 }
 
 .service-card:hover .service-card__icon {
-    background: rgba(var(--color-accent-rgb), 0.15);
+    background: rgba(74, 144, 217, 0.15);
 }
 
 .service-card__title {
@@ -898,30 +907,30 @@ input, textarea {
     padding: 4px 12px;
     font-size: 0.75rem;
     font-weight: 500;
-    background: rgba(var(--color-accent-rgb), 0.06);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.06);
+    color: #7EB4E8;
     border-radius: 100px;
-    border: 1px solid rgba(var(--color-accent-rgb), 0.1);
+    border: 1px solid rgba(74, 144, 217, 0.12);
 }
 
 .service-card__arrow {
     position: absolute;
     top: 32px;
     right: 32px;
-    color: var(--color-gray-dark);
+    color: #555555;
     transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .service-card:hover .service-card__arrow {
-    color: var(--color-accent);
+    color: #F0F0F0;
     transform: translate(4px, -4px);
 }
 
 /* Featured service card spans 2 columns on last row */
 .service-card--featured {
     grid-column: span 2;
-    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(var(--color-accent-rgb), 0.03) 100%);
-    border-color: rgba(var(--color-accent-rgb), 0.15);
+    background: linear-gradient(135deg, rgba(14, 20, 32, 0.7) 0%, rgba(74, 144, 217, 0.05) 100%);
+    border-color: rgba(74, 144, 217, 0.12);
 }
 
 /* ----------------------------------------------------------------
@@ -1223,12 +1232,13 @@ input, textarea {
 
 .diff-card {
     position: relative;
-    padding: 28px 20px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    padding: 32px 24px;
+    background: rgba(14, 20, 32, 0.65);
+    border: 1px solid rgba(74, 144, 217, 0.08);
     border-radius: var(--radius-xl);
     text-align: center;
     overflow: hidden;
+    backdrop-filter: blur(12px);
     transition: transform var(--transition-medium),
                 border-color var(--transition-medium),
                 box-shadow var(--transition-medium);
@@ -1236,8 +1246,9 @@ input, textarea {
 
 .diff-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(var(--color-accent-rgb), 0.3);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    border-color: rgba(74, 144, 217, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4),
+                0 0 60px rgba(74, 144, 217, 0.05);
 }
 
 .diff-card__number {
@@ -1246,7 +1257,7 @@ input, textarea {
     right: 20px;
     font-size: 4rem;
     font-weight: 900;
-    color: rgba(var(--color-accent-rgb), 0.05);
+    color: rgba(74, 144, 217, 0.04);
     line-height: 1;
 }
 
@@ -1257,14 +1268,14 @@ input, textarea {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba(var(--color-accent-rgb), 0.06);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.06);
+    color: #7EB4E8;
     margin: 0 auto 16px;
     transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
 .diff-card:hover .diff-card__icon {
-    background: rgba(var(--color-accent-rgb), 0.12);
+    background: rgba(74, 144, 217, 0.12);
     transform: scale(1.05);
 }
 
@@ -1287,7 +1298,7 @@ input, textarea {
 .cta {
     position: relative;
     overflow: hidden;
-    background: var(--color-bg-alt);
+    background: rgba(8, 12, 24, 0.5);
 }
 
 .cta__bg {
@@ -1306,7 +1317,7 @@ input, textarea {
 .cta__orb--1 {
     width: 500px;
     height: 500px;
-    background: rgba(var(--color-accent-rgb), 0.06);
+    background: rgba(74, 144, 217, 0.06);
     top: -200px;
     left: -100px;
 }
@@ -1314,7 +1325,7 @@ input, textarea {
 .cta__orb--2 {
     width: 400px;
     height: 400px;
-    background: rgba(108, 92, 231, 0.04);
+    background: rgba(30, 60, 120, 0.05);
     bottom: -200px;
     right: -100px;
 }
@@ -1383,18 +1394,19 @@ input, textarea {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(var(--color-accent-rgb), 0.08);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.08);
+    color: #7EB4E8;
     flex-shrink: 0;
 }
 
 /* Form */
 .contact__form-wrapper {
-    padding: 28px;
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
+    padding: 32px;
+    background: rgba(14, 20, 32, 0.7);
+    border: 1px solid rgba(74, 144, 217, 0.08);
     border-radius: var(--radius-xl);
-    box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.3);
 }
 
 .form-group {
@@ -1414,8 +1426,8 @@ input, textarea {
 .form-input {
     width: 100%;
     padding: 14px 18px;
-    background: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(74, 144, 217, 0.1);
     border-radius: var(--radius-md);
     color: var(--color-text-primary);
     font-size: 0.95rem;
@@ -1428,8 +1440,8 @@ input, textarea {
 }
 
 .form-input:focus {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.1);
+    border-color: rgba(74, 144, 217, 0.4);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.08);
 }
 
 .form-input.error {
@@ -1468,9 +1480,9 @@ input, textarea {
    ---------------------------------------------------------------- */
 .footer {
     padding: 80px 0 40px;
-    border-top: 1px solid var(--color-border);
-    background: #1D1D1F;
-    color: #F5F5F7;
+    border-top: 1px solid rgba(74, 144, 217, 0.08);
+    background: linear-gradient(180deg, #030508 0%, #000000 100%);
+    color: #F0F0F0;
 }
 
 .footer__grid {
@@ -1482,7 +1494,7 @@ input, textarea {
 
 .footer__tagline {
     font-size: 0.92rem;
-    color: #86868B;
+    color: #555555;
     line-height: 1.7;
     margin-top: 16px;
     max-width: 320px;
@@ -1490,23 +1502,23 @@ input, textarea {
 
 /* Override logo/name colors inside dark footer */
 .footer .navbar__logo {
-    background: var(--gradient-accent);
+    background: #FFFFFF;
 }
 
 .footer .navbar__name {
-    color: #F5F5F7;
+    color: #F0F0F0;
 }
 
 .footer .navbar__name--accent {
-    color: #2997FF;
+    color: #7EB4E8;
 }
 
 .footer__heading {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #F5F5F7;
+    letter-spacing: 3px;
+    color: #777777;
     margin-bottom: 20px;
 }
 
@@ -1516,12 +1528,12 @@ input, textarea {
 
 .footer__links a {
     font-size: 0.9rem;
-    color: #A1A1A6;
+    color: #555555;
     transition: color var(--transition-fast);
 }
 
 .footer__links a:hover {
-    color: var(--color-accent);
+    color: #7EB4E8;
 }
 
 .footer__social-links {
@@ -1536,16 +1548,16 @@ input, textarea {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #A1A1A6;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #555555;
     transition: all var(--transition-fast);
 }
 
 .footer__social-link:hover {
-    background: rgba(var(--color-accent-rgb), 0.15);
-    border-color: rgba(var(--color-accent-rgb), 0.4);
-    color: #2997FF;
+    background: rgba(74, 144, 217, 0.1);
+    border-color: rgba(74, 144, 217, 0.3);
+    color: #7EB4E8;
     transform: translateY(-3px);
 }
 
@@ -1554,17 +1566,17 @@ input, textarea {
     align-items: center;
     justify-content: space-between;
     padding-top: 32px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.05);
     font-size: 0.82rem;
-    color: #6E6E73;
+    color: #444444;
 }
 
 .footer__built {
-    color: #6E6E73;
+    color: #444444;
 }
 
 /* ----------------------------------------------------------------
-   LIVELY BACKGROUNDS — Subtle gradient orbs per section
+   LIVELY BACKGROUNDS — Premium gradient orbs per section
    ---------------------------------------------------------------- */
 .section {
     padding: var(--section-padding) 0;
@@ -1575,47 +1587,47 @@ input, textarea {
 .section::before {
     content: '';
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.5;
+    filter: blur(140px);
+    opacity: 0.6;
     pointer-events: none;
     z-index: 0;
 }
 
 .about::before {
-    background: rgba(var(--color-accent-rgb), 0.06);
-    top: -200px;
+    background: rgba(74, 144, 217, 0.06);
+    top: -250px;
     right: -200px;
 }
 
 .services::before {
-    background: rgba(108, 92, 231, 0.04);
-    bottom: -200px;
+    background: rgba(30, 60, 140, 0.07);
+    bottom: -250px;
     left: -200px;
 }
 
 .portfolio::before {
-    background: rgba(41, 151, 255, 0.05);
+    background: rgba(74, 144, 217, 0.04);
     top: -150px;
     left: -250px;
 }
 
 .tech::before {
-    background: rgba(var(--color-accent-rgb), 0.04);
+    background: rgba(30, 60, 140, 0.04);
     bottom: -250px;
     right: -200px;
 }
 
 .differentiators::before {
-    background: rgba(108, 92, 231, 0.05);
+    background: rgba(74, 144, 217, 0.05);
     top: -200px;
     right: -300px;
 }
 
 .contact::before {
-    background: rgba(41, 151, 255, 0.04);
+    background: rgba(30, 60, 140, 0.05);
     bottom: -200px;
     left: -200px;
 }
@@ -1628,7 +1640,7 @@ input, textarea {
 /* Subtle dot pattern on alt-bg sections */
 .services,
 .tech {
-    background-image: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.03) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(74, 144, 217, 0.03) 1px, transparent 1px);
     background-size: 32px 32px;
 }
 
@@ -1691,7 +1703,7 @@ input, textarea {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.6s ease;
 }
 
@@ -1717,9 +1729,9 @@ input, textarea {
     gap: 6px;
     padding: 6px 14px;
     border-radius: 100px;
-    background: rgba(var(--color-accent-rgb), 0.08);
-    border: 1px solid rgba(var(--color-accent-rgb), 0.15);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.08);
+    border: 1px solid rgba(74, 144, 217, 0.18);
+    color: #7EB4E8;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -1729,8 +1741,8 @@ input, textarea {
 }
 
 .lang-toggle:hover {
-    background: rgba(var(--color-accent-rgb), 0.14);
-    border-color: rgba(var(--color-accent-rgb), 0.3);
+    background: rgba(74, 144, 217, 0.14);
+    border-color: rgba(74, 144, 217, 0.35);
     transform: translateY(-1px);
 }
 
@@ -1784,8 +1796,8 @@ input, textarea {
 /* Scroll to top */
 .fab--top {
     background: var(--color-surface);
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border);
+    color: #F0F0F0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
@@ -1799,9 +1811,9 @@ input, textarea {
 }
 
 .fab--top:hover {
-    background: var(--color-accent);
-    color: white;
-    border-color: var(--color-accent);
+    background: linear-gradient(135deg, #4A90D9, #3A6FB5);
+    color: #FFFFFF;
+    border-color: #4A90D9;
     transform: translateY(-3px);
 }
 
@@ -1825,7 +1837,8 @@ input, textarea {
    IMPACT / PRODUCTIVITY
    ---------------------------------------------------------------- */
 .impact {
-    background: var(--color-bg-alt);
+    background: rgba(10, 16, 28, 0.6);
+    backdrop-filter: blur(2px);
 }
 
 .impact__layout {
@@ -1837,12 +1850,12 @@ input, textarea {
 
 .impact__left .section__label {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--color-accent);
-    margin-bottom: 8px;
+    letter-spacing: 4px;
+    color: #7EB4E8;
+    margin-bottom: 12px;
 }
 
 .impact__left .section__title {
@@ -1851,13 +1864,14 @@ input, textarea {
 
 /* Speed comparison widget */
 .impact__speed-display {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: rgba(14, 20, 32, 0.7);
+    border: 1px solid rgba(74, 144, 217, 0.08);
     border-radius: var(--radius-xl);
     padding: 32px;
     text-align: center;
     margin-bottom: 16px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.05);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.3);
 }
 
 .impact__speed-before,
@@ -1878,7 +1892,7 @@ input, textarea {
 }
 
 .impact__speed-label--new {
-    color: var(--color-accent);
+    color: #7EB4E8;
 }
 
 .impact__speed-time {
@@ -1891,7 +1905,7 @@ input, textarea {
 .impact__speed-time--old {
     color: var(--color-text-quaternary);
     text-decoration: line-through;
-    text-decoration-color: rgba(0,0,0,0.2);
+    text-decoration-color: rgba(255,255,255,0.15);
 }
 
 .impact__speed-time--new {
@@ -1923,8 +1937,8 @@ input, textarea {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(var(--color-accent-rgb), 0.08);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.1);
+    color: #7EB4E8;
     flex-shrink: 0;
 }
 
@@ -1940,18 +1954,19 @@ input, textarea {
     align-items: center;
     gap: 14px;
     padding: 14px 20px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    background: rgba(14, 20, 32, 0.6);
+    border: 1px solid rgba(74, 144, 217, 0.08);
     border-radius: var(--radius-md);
     font-size: 0.92rem;
     font-weight: 600;
     color: var(--color-text-primary);
+    backdrop-filter: blur(8px);
     transition: border-color var(--transition-fast), background var(--transition-fast);
 }
 
 .impact__pillar:hover {
-    border-color: rgba(var(--color-accent-rgb), 0.25);
-    background: rgba(var(--color-accent-rgb), 0.02);
+    border-color: rgba(74, 144, 217, 0.2);
+    background: rgba(74, 144, 217, 0.06);
 }
 
 .impact__pillar-icon {
@@ -1961,9 +1976,123 @@ input, textarea {
     width: 36px;
     height: 36px;
     border-radius: var(--radius-sm);
-    background: rgba(var(--color-accent-rgb), 0.08);
-    color: var(--color-accent);
+    background: rgba(74, 144, 217, 0.08);
+    color: #7EB4E8;
     flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------------
+   SCROLL-ADAPTIVE TEXT COLORS (light zone detection)
+   ---------------------------------------------------------------- */
+.hero__title,
+.hero__subtitle,
+.hero__badge,
+.hero__stat-label,
+.section__title,
+.section__desc,
+.section__label,
+.about__text,
+.about__highlight,
+.contact__text,
+.contact__detail,
+.navbar__name,
+.navbar__link {
+    transition: color 0.5s ease;
+}
+
+.hero__badge {
+    transition: color 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+}
+
+.about__highlight {
+    transition: color 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+}
+
+/* When a section overlaps the gradient light zone */
+.section--light-zone .hero__title {
+    color: #1A2744;
+}
+
+.section--light-zone .hero__subtitle {
+    color: #3A4F6A;
+}
+
+.section--light-zone .hero__badge {
+    color: #1B3A5C;
+    background: rgba(74, 144, 217, 0.18);
+    border-color: rgba(74, 144, 217, 0.4);
+}
+
+.section--light-zone .hero__stat-label {
+    color: #3A4F6A;
+}
+
+.section--light-zone .section__title {
+    color: #1A2744;
+}
+
+.section--light-zone .text--gradient,
+.section--light-zone .hero__title--gradient {
+    background: linear-gradient(135deg, #0D1B2A 0%, #2A6AAA 50%, #4A90D9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section--light-zone .section__desc {
+    color: #3A4F6A;
+}
+
+.section--light-zone .section__label {
+    color: #1B4F8A;
+}
+
+.section--light-zone .about__text {
+    color: #3A4F6A;
+}
+
+.section--light-zone .about__highlight {
+    color: #1A2744;
+    background: rgba(74, 144, 217, 0.15);
+    border-color: rgba(74, 144, 217, 0.35);
+}
+
+.section--light-zone .about__highlight-icon {
+    color: #1B4F8A;
+    background: rgba(74, 144, 217, 0.2);
+}
+
+.section--light-zone .contact__text,
+.section--light-zone .contact__detail {
+    color: #3A4F6A;
+}
+
+.section--light-zone .contact__detail-icon {
+    color: #1B4F8A;
+    background: rgba(74, 144, 217, 0.2);
+}
+
+/* Navbar adaptation when at top (light zone) */
+.navbar--light-zone .navbar__name {
+    color: #1A2744;
+}
+
+.navbar--light-zone .navbar__name--accent {
+    color: #1B4F8A;
+}
+
+.navbar--light-zone .navbar__link {
+    color: #3A4F6A;
+}
+
+.navbar--light-zone .navbar__link:hover,
+.navbar--light-zone .navbar__link.active {
+    color: #1A2744;
+}
+
+.navbar--light-zone .navbar__logo {
+    background: #1A2744;
+    color: #E8EDF2;
 }
 
 /* ----------------------------------------------------------------
@@ -1973,7 +2102,7 @@ input, textarea {
 /* Tablet */
 @media (max-width: 1024px) {
     :root {
-        --section-padding: 30px;
+        --section-padding: 60px;
     }
 
     .about__grid {
@@ -2031,7 +2160,7 @@ input, textarea {
 /* Mobile */
 @media (max-width: 768px) {
     :root {
-        --section-padding: 24px;
+        --section-padding: 48px;
         --container-padding: 20px;
     }
 

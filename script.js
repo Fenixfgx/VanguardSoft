@@ -266,7 +266,7 @@
                     if (dist < 150) {
                         const opacity = (1 - dist / 150) * 0.15;
                         ctx.beginPath();
-                        ctx.strokeStyle = 'rgba(0, 113, 227, ' + opacity + ')';
+                        ctx.strokeStyle = 'rgba(74, 144, 217, ' + opacity + ')';
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -280,7 +280,7 @@
                 const p = particles[i];
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 113, 227, ' + p.opacity + ')';
+                ctx.fillStyle = 'rgba(74, 144, 217, ' + p.opacity + ')';
                 ctx.fill();
 
                 // Update position
@@ -579,49 +579,49 @@
             nav_impact: 'Impact',
             nav_contact: 'Contact',
             // Hero
-            hero_badge: 'Technological Innovation',
-            hero_title: 'We build the<br><span class="hero__title--gradient">digital future</span>',
-            hero_subtitle: 'Technology solutions on another level. We create software, platforms and digital experiences that transform businesses.',
-            hero_cta_primary: 'Work with us',
-            hero_cta_secondary: 'Explore services',
+            hero_badge: 'Custom software for businesses',
+            hero_title: 'Your operation, optimized.<br><span class="hero__title--gradient">Your software, custom-built.</span>',
+            hero_subtitle: 'We develop software, automate processes and build mobile apps that cut operational costs and scale with your business.',
+            hero_cta_primary: 'Book a free consultation',
+            hero_cta_secondary: 'View services',
             hero_stat_projects: 'Projects',
             hero_stat_clients: 'Clients',
             hero_stat_satisfaction: 'Satisfaction',
             // About
-            about_card1: 'Scalable Architecture',
-            about_card2: 'AI Integration',
-            about_card3: 'Premium Design',
+            about_card1: 'Python Backend',
+            about_card2: 'Process Automation',
+            about_card3: 'Flutter Apps',
             about_label: 'About Us',
-            about_title: 'We don\'t just develop software.<br><span class="text--gradient">We create competitive advantages.</span>',
-            about_text1: 'At Vanguard Soft we combine advanced engineering with cutting-edge design. We think like strategists, design like artists and build like engineers \u2014 creating digital products that drive your business.',
-            about_h1: 'Focus on measurable results',
-            about_h2: 'Cutting-edge technology',
-            about_h3: 'Commitment to excellence',
+            about_title: 'Software with purpose.<br><span class="text--gradient">Results you can measure.</span>',
+            about_text1: 'Led by David, a developer specialized in Python, Flutter and business automation. At VanguardSoft we don\'t sell tech for trends: we analyze your operation, find bottlenecks and build the exact software you need.',
+            about_h1: 'Faster processes, lower costs',
+            about_h2: 'Python, Flutter & APIs',
+            about_h3: 'Direct access to the developer',
             // Services
             services_label: 'Our Services',
-            services_title: 'Solutions that<br><span class="text--gradient">transform industries</span>',
-            services_desc: 'We offer a complete ecosystem of technology services designed to drive your business.',
+            services_title: 'What we do for<br><span class="text--gradient">your business</span>',
+            services_desc: 'Each service solves a specific problem in your operation. No filler, no unnecessary tech.',
             svc1_title: 'Web Development',
-            svc1_desc: 'Corporate websites, landing pages, e-commerce and high-performance web platforms with premium design.',
+            svc1_desc: 'Is your website failing to build trust or convert? We create sites and web platforms that capture clients and reflect your company\'s quality.',
             svc2_title: 'Custom Software',
-            svc2_desc: 'Enterprise systems, internal tools and customized solutions that adapt to your processes.',
+            svc2_desc: 'Using spreadsheets or generic tools that don\'t fit? We build the exact system your operation needs, integrated with your real processes.',
             svc3_title: 'Cross-platform Apps',
-            svc3_desc: 'Native and cross-platform applications for iOS, Android, desktop and web from a single codebase.',
-            svc4_title: 'Automation',
-            svc4_desc: 'Automate processes, eliminate repetitive tasks and integrate systems to maximize operational efficiency.',
-            svc5_title: 'AI & Smart Solutions',
-            svc5_desc: 'We integrate artificial intelligence into your processes. Chatbots, predictive analytics and smart automation.',
+            svc3_desc: 'Need an app for iOS and Android without doubling costs? With Flutter, we build one app that runs on every platform.',
+            svc4_title: 'Process Automation',
+            svc4_desc: 'Is your team wasting hours on repetitive tasks? We automate workflows, connect systems and free up time for what matters.',
+            svc5_title: 'Systems Integration',
+            svc5_desc: 'Your tools don\'t talk to each other? We connect your platforms, APIs and databases so information flows without manual intervention.',
             // Impact
             impact_label: 'Real Impact',
-            impact_title: 'What used to take days,<br><span class="text--gradient">now takes seconds</span>',
-            impact_desc: 'We automate the bottlenecks of your business. Your team focuses on creating value; technology handles the rest — non-stop, error-free, without delays.',
+            impact_title: 'Processes that took days,<br><span class="text--gradient">solved in seconds</span>',
+            impact_desc: 'We find the bottlenecks in your operation and automate them. Your team stops losing time on manual tasks and focuses on growing the business.',
             impact_before: 'Before',
             impact_now: 'Now',
-            impact_time_before: 'Hours · Days',
+            impact_time_before: 'Hours \u00b7 Days',
             impact_time_after: 'Seconds',
-            impact_pill1: 'Exponential speed',
+            impact_pill1: 'Lower operational costs',
             impact_pill2: 'Zero manual errors',
-            impact_pill3: 'Available 24/7',
+            impact_pill3: 'Continuous 24/7 operation',
             portfolio_label: 'Portfolio',
             portfolio_title: 'Projects that<br><span class="text--gradient">speak for themselves</span>',
             portfolio_desc: 'A showcase of what we\'re capable of building. Each project is an innovation story.',
@@ -643,26 +643,26 @@
             tech_cloud: 'Cloud & DevOps',
             tech_ai: 'AI & Data',
             // Differentiators
-            diff_label: 'Why choose us?',
-            diff_title: 'What makes us<br><span class="text--gradient">different</span>',
-            diff1_title: 'Speed',
-            diff1_desc: 'We develop fast without sacrificing quality. Agile methodologies, incremental deliveries and results from the first sprint.',
-            diff2_title: 'Innovation',
-            diff2_desc: 'We use the most advanced technologies on the market. Always one step ahead to give you a competitive edge.',
-            diff3_title: 'Scalability',
-            diff3_desc: 'Modular architectures designed to grow. Today\'s solution will be the foundation of tomorrow\'s empire.',
-            diff4_title: 'Dedicated Support',
-            diff4_desc: 'Continuous post-delivery support. Your success is our success, and we\'re with you every step of the way.',
+            diff_label: 'Guarantees',
+            diff_title: 'Why trust<br><span class="text--gradient">VanguardSoft</span>',
+            diff1_title: 'Fast Delivery',
+            diff1_desc: 'Short sprints with visible progress every week. You see real results from day one, no months of waiting.',
+            diff2_title: 'Direct Contact',
+            diff2_desc: 'You talk to the person building your software. No middlemen, no noise. Clear technical communication and agile decisions.',
+            diff3_title: 'Built to Scale',
+            diff3_desc: 'Modular architectures that grow with you. What we build today handles tomorrow\'s volume without rebuilding anything.',
+            diff4_title: 'Post-Delivery Support',
+            diff4_desc: 'We don\'t vanish after delivery. Maintenance, adjustments and ongoing support so your software always works.',
             // CTA
-            cta_title: 'Take your idea to the<br><span class="text--gradient">next level</span>',
-            cta_desc: 'Every great project starts with a conversation. Tell us your vision and we\'ll turn it into digital reality.',
-            cta_btn: 'Let\'s start creating',
+            cta_title: 'Ready to optimize<br><span class="text--gradient">your operation?</span>',
+            cta_desc: 'Tell us the problem you want to solve. Within 24 hours we\'ll tell you how we can help \u2014 no strings attached.',
+            cta_btn: 'Request free consultation',
             // Contact
             contact_label: 'Contact',
-            contact_title: 'Let\'s talk about your<br><span class="text--gradient">next project</span>',
-            contact_text: 'We\'re ready to listen. Fill out the form and we\'ll get back to you within 24 hours.',
+            contact_title: 'Tell us your challenge.<br><span class="text--gradient">We\'ll propose a solution.</span>',
+            contact_text: 'Fill out the form with your project details. We respond within 24 hours with a clear proposal, no commitment required.',
             contact_email: 'contacto@vanguardsoft.com',
-            contact_location: 'Remote — Global',
+            contact_location: 'Remote \u2014 Global',
             form_name: 'Name',
             form_name_ph: 'Your full name',
             form_email: 'Email',
@@ -672,59 +672,59 @@
             form_submit: 'Send message',
             form_success: 'Message sent! We\'ll get in touch soon.',
             // Footer
-            footer_tagline: 'We build the digital future. High-impact technology solutions for companies that want to lead.',
+            footer_tagline: 'Software company specialized in custom development, process automation and mobile apps for businesses that want to operate better.',
             footer_nav: 'Navigation',
             footer_services: 'Services',
             footer_follow: 'Follow Us',
-            footer_copy: '\u00a9 2026 Vanguard Soft. All rights reserved.',
-            footer_built: 'Built with passion for innovation.'
+            footer_copy: '\u00a9 2026 VanguardSoft. All rights reserved.',
+            footer_built: 'Built with discipline and purpose.'
         },
         es: {
             nav_about: 'Nosotros',
             nav_services: 'Servicios',
             nav_impact: 'Impacto',
             nav_contact: 'Contacto',
-            hero_badge: 'Innovaci\u00f3n Tecnol\u00f3gica',
-            hero_title: 'Construimos el<br><span class="hero__title--gradient">futuro digital</span>',
-            hero_subtitle: 'Soluciones tecnol\u00f3gicas a otro nivel. Creamos software, plataformas y experiencias digitales que transforman negocios.',
-            hero_cta_primary: 'Trabaja con nosotros',
-            hero_cta_secondary: 'Explorar servicios',
+            hero_badge: 'Software a medida para empresas',
+            hero_title: 'Tu operaci\u00f3n, optimizada.<br><span class="hero__title--gradient">Tu software, a medida.</span>',
+            hero_subtitle: 'Desarrollamos software, automatizamos procesos y creamos aplicaciones m\u00f3viles que reducen costos operativos y escalan con tu negocio.',
+            hero_cta_primary: 'Agenda una asesor\u00eda gratis',
+            hero_cta_secondary: 'Ver servicios',
             hero_stat_projects: 'Proyectos',
             hero_stat_clients: 'Clientes',
             hero_stat_satisfaction: 'Satisfacci\u00f3n',
-            about_card1: 'Arquitectura Escalable',
-            about_card2: 'Integraci\u00f3n IA',
-            about_card3: 'Dise\u00f1o Premium',
+            about_card1: 'Backend en Python',
+            about_card2: 'Automatizaci\u00f3n de Procesos',
+            about_card3: 'Apps con Flutter',
             about_label: 'Sobre Nosotros',
-            about_title: 'No solo desarrollamos software.<br><span class="text--gradient">Creamos ventajas competitivas.</span>',
-            about_text1: 'En Vanguard Soft combinamos ingenier\u00eda avanzada con dise\u00f1o de vanguardia. Pensamos como estrategas, dise\u00f1amos como artistas y construimos como ingenieros \u2014 creando productos digitales que impulsan tu negocio.',
-            about_h1: 'Enfoque en resultados medibles',
-            about_h2: 'Tecnolog\u00eda de \u00faltima generaci\u00f3n',
-            about_h3: 'Compromiso con la excelencia',
+            about_title: 'Software con prop\u00f3sito.<br><span class="text--gradient">Resultados que se miden.</span>',
+            about_text1: 'Liderado por David, desarrollador especializado en Python, Flutter y automatizaci\u00f3n empresarial. En VanguardSoft no vendemos tecnolog\u00eda por moda: analizamos tu operaci\u00f3n, identificamos cuellos de botella y construimos el software exacto que necesitas.',
+            about_h1: 'Procesos m\u00e1s r\u00e1pidos, costos m\u00e1s bajos',
+            about_h2: 'Python, Flutter y APIs',
+            about_h3: 'Trato directo con el desarrollador',
             services_label: 'Nuestros Servicios',
-            services_title: 'Soluciones que<br><span class="text--gradient">transforman industrias</span>',
-            services_desc: 'Ofrecemos un ecosistema completo de servicios tecnol\u00f3gicos dise\u00f1ados para impulsar tu negocio.',
+            services_title: 'Lo que hacemos por<br><span class="text--gradient">tu negocio</span>',
+            services_desc: 'Cada servicio resuelve un problema concreto de tu operaci\u00f3n. Sin relleno, sin tecnolog\u00eda innecesaria.',
             svc1_title: 'Desarrollo Web',
-            svc1_desc: 'P\u00e1ginas corporativas, landing pages, e-commerce y plataformas web de alto rendimiento con dise\u00f1o premium.',
+            svc1_desc: '\u00bfTu web no genera confianza o no convierte? Creamos sitios y plataformas web que captan clientes y reflejan la calidad de tu empresa.',
             svc2_title: 'Software a Medida',
-            svc2_desc: 'Sistemas empresariales, herramientas internas y soluciones personalizadas que se adaptan a tus procesos.',
+            svc2_desc: '\u00bfUsas Excel o herramientas gen\u00e9ricas que no encajan? Desarrollamos el sistema exacto que tu operaci\u00f3n necesita, integrado con tus procesos reales.',
             svc3_title: 'Apps Multiplataforma',
-            svc3_desc: 'Aplicaciones nativas y multiplataforma para iOS, Android, escritorio y web desde una sola base de c\u00f3digo.',
-            svc4_title: 'Automatizaci\u00f3n',
-            svc4_desc: 'Automatiza procesos, elimina tareas repetitivas e integra sistemas para maximizar la eficiencia operativa.',
-            svc5_title: 'IA y Soluciones Inteligentes',
-            svc5_desc: 'Integramos inteligencia artificial en tus procesos. Chatbots, an\u00e1lisis predictivo y automatizaci\u00f3n inteligente.',
+            svc3_desc: '\u00bfNecesitas una app que funcione en iOS y Android sin duplicar costos? Con Flutter, desarrollamos una sola app que corre en todas las plataformas.',
+            svc4_title: 'Automatizaci\u00f3n de Procesos',
+            svc4_desc: '\u00bfTu equipo pierde horas en tareas repetitivas? Automatizamos flujos de trabajo, conectamos sistemas y liberamos tiempo para lo que importa.',
+            svc5_title: 'Integraci\u00f3n de Sistemas',
+            svc5_desc: '\u00bfTus herramientas no se comunican entre s\u00ed? Conectamos tus plataformas, APIs y bases de datos para que la informaci\u00f3n fluya sin intervenci\u00f3n manual.',
             // Impact
             impact_label: 'Impacto Real',
-            impact_title: 'Lo que antes tardaba d\u00edas,<br><span class="text--gradient">ahora tarda segundos</span>',
-            impact_desc: 'Automatizamos los cuellos de botella de tu empresa. Tu equipo se enfoca en crear valor; la tecnolog\u00eda se encarga del resto \u2014 sin parar, sin errores, sin demoras.',
+            impact_title: 'Procesos que tardaban d\u00edas,<br><span class="text--gradient">resueltos en segundos</span>',
+            impact_desc: 'Identificamos los cuellos de botella de tu operaci\u00f3n y los automatizamos. Tu equipo deja de perder tiempo en tareas manuales y se enfoca en hacer crecer el negocio.',
             impact_before: 'Antes',
             impact_now: 'Ahora',
             impact_time_before: 'Horas \u00b7 D\u00edas',
             impact_time_after: 'Segundos',
-            impact_pill1: 'Velocidad exponencial',
-            impact_pill2: 'Cero errores manuales',
-            impact_pill3: 'Disponible 24/7',
+            impact_pill1: 'Reducci\u00f3n de costos operativos',
+            impact_pill2: 'Eliminaci\u00f3n de errores manuales',
+            impact_pill3: 'Operaci\u00f3n continua 24/7',
             portfolio_title: 'Proyectos que<br><span class="text--gradient">hablan por s\u00ed solos</span>',
             portfolio_desc: 'Una muestra de lo que somos capaces de construir. Cada proyecto es una historia de innovaci\u00f3n.',
             port1_cat: 'Plataforma Web',
@@ -743,22 +743,22 @@
             tech_mobile: 'Mobile & Desktop',
             tech_cloud: 'Cloud & DevOps',
             tech_ai: 'IA & Data',
-            diff_label: '\u00bfPor qu\u00e9 elegirnos?',
-            diff_title: 'Lo que nos hace<br><span class="text--gradient">diferentes</span>',
-            diff1_title: 'Velocidad',
-            diff1_desc: 'Desarrollamos r\u00e1pido sin sacrificar calidad. Metodolog\u00edas \u00e1giles, entregas incrementales y resultados desde el primer sprint.',
-            diff2_title: 'Innovaci\u00f3n',
-            diff2_desc: 'Utilizamos las tecnolog\u00edas m\u00e1s avanzadas del mercado. Siempre un paso adelante para darte ventaja competitiva.',
-            diff3_title: 'Escalabilidad',
-            diff3_desc: 'Arquitecturas modulares dise\u00f1adas para crecer. Tu soluci\u00f3n de hoy ser\u00e1 la base de tu imperio de ma\u00f1ana.',
-            diff4_title: 'Soporte Dedicado',
-            diff4_desc: 'Acompa\u00f1amiento continuo post-entrega. Tu \u00e9xito es nuestro \u00e9xito, y estamos contigo en cada paso del camino.',
-            cta_title: 'Lleva tu idea al<br><span class="text--gradient">siguiente nivel</span>',
-            cta_desc: 'Cada gran proyecto comienza con una conversaci\u00f3n. Cu\u00e9ntanos tu visi\u00f3n y la convertiremos en realidad digital.',
-            cta_btn: 'Empecemos a crear',
+            diff_label: 'Garant\u00edas',
+            diff_title: 'Por qu\u00e9 confiar en<br><span class="text--gradient">VanguardSoft</span>',
+            diff1_title: 'Entregas R\u00e1pidas',
+            diff1_desc: 'Sprints cortos con avances visibles cada semana. Ves progreso real desde el d\u00eda uno, sin esperar meses.',
+            diff2_title: 'Trato Directo',
+            diff2_desc: 'Hablas con quien construye tu software. Sin intermediarios, sin ruido. Comunicaci\u00f3n t\u00e9cnica clara y decisiones \u00e1giles.',
+            diff3_title: 'Hecho para Crecer',
+            diff3_desc: 'Arquitecturas modulares que escalan contigo. Lo que construimos hoy soporta el volumen de ma\u00f1ana sin rehacer nada.',
+            diff4_title: 'Soporte Post-Entrega',
+            diff4_desc: 'No desaparecemos al entregar. Mantenimiento, ajustes y soporte continuo para que tu software siempre funcione.',
+            cta_title: '\u00bfListo para optimizar<br><span class="text--gradient">tu operaci\u00f3n?</span>',
+            cta_desc: 'Cu\u00e9ntanos qu\u00e9 problema quieres resolver. En 24 horas te decimos c\u00f3mo podemos ayudarte \u2014 sin compromiso.',
+            cta_btn: 'Solicitar asesor\u00eda gratuita',
             contact_label: 'Contacto',
-            contact_title: 'Hablemos de tu<br><span class="text--gradient">pr\u00f3ximo proyecto</span>',
-            contact_text: 'Estamos listos para escucharte. Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.',
+            contact_title: 'Cu\u00e9ntanos tu reto.<br><span class="text--gradient">Te proponemos una soluci\u00f3n.</span>',
+            contact_text: 'Completa el formulario con los detalles de tu proyecto. Respondemos en menos de 24 horas con una propuesta clara y sin compromiso.',
             contact_email: 'contacto@vanguardsoft.com',
             contact_location: 'Remoto \u2014 Global',
             form_name: 'Nombre',
@@ -769,12 +769,12 @@
             form_message_ph: 'Cu\u00e9ntanos sobre tu proyecto...',
             form_submit: 'Enviar mensaje',
             form_success: '\u00a1Mensaje enviado! Nos pondremos en contacto pronto.',
-            footer_tagline: 'Construimos el futuro digital. Soluciones tecnol\u00f3gicas de alto impacto para empresas que quieren liderar.',
+            footer_tagline: 'Empresa de software especializada en desarrollo a medida, automatizaci\u00f3n de procesos y aplicaciones m\u00f3viles para empresas que quieren operar mejor.',
             footer_nav: 'Navegaci\u00f3n',
             footer_services: 'Servicios',
             footer_follow: 'S\u00edguenos',
-            footer_copy: '\u00a9 2026 Vanguard Soft. Todos los derechos reservados.',
-            footer_built: 'Construido con pasi\u00f3n por la innovaci\u00f3n.'
+            footer_copy: '\u00a9 2026 VanguardSoft. Todos los derechos reservados.',
+            footer_built: 'Construido con disciplina y prop\u00f3sito.'
         }
     };
 
@@ -825,5 +825,85 @@
 
     if (langToggle) langToggle.addEventListener('click', handleLangToggle);
     if (langToggleMobile) langToggleMobile.addEventListener('click', handleLangToggle);
+
+    // ============================================================
+    // SCROLL-BASED GRADIENT MOVEMENT & ADAPTIVE TEXT COLORS
+    // ============================================================
+    var gradientTicking = false;
+
+    // Sections with transparent backgrounds (affected by body gradient)
+    var transparentSections = document.querySelectorAll('#hero, #about, #differentiators, #contact');
+
+    function updateGradientOnScroll() {
+        var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = scrollHeight > 0 ? Math.min(window.scrollY / scrollHeight, 1) : 0;
+
+        // X position: 50% → 15% → 50% (swings left then returns)
+        var gradX = 50 - 35 * Math.sin(progress * Math.PI);
+
+        // Y position: 0% → 100% (top to bottom)
+        var gradY = progress * 100;
+
+        document.body.style.setProperty('--gradient-x', gradX + '%');
+        document.body.style.setProperty('--gradient-y', gradY + '%');
+
+        // Adaptive text colors: check which transparent sections are near the light
+        adaptSectionColors(gradX, gradY);
+
+        // Navbar adaptation: light zone only when gradient is near top
+        if (navbar && !navbar.classList.contains('scrolled') && gradY < 25) {
+            navbar.classList.add('navbar--light-zone');
+        } else if (navbar) {
+            navbar.classList.remove('navbar--light-zone');
+        }
+
+        gradientTicking = false;
+    }
+
+    function adaptSectionColors(gradX, gradY) {
+        // The gradient light center is at (gradX%, gradY%) of the viewport
+        // The light is intense within ~25% radius of the ellipse center
+        var viewH = window.innerHeight;
+
+        transparentSections.forEach(function (section) {
+            var rect = section.getBoundingClientRect();
+
+            // Skip sections not visible
+            if (rect.bottom < -100 || rect.top > viewH + 100) {
+                section.classList.remove('section--light-zone');
+                return;
+            }
+
+            // Convert gradient Y% to viewport pixel position
+            var lightY = (gradY / 100) * viewH;
+            var lightX = (gradX / 100) * window.innerWidth;
+
+            // Section center in viewport
+            var sectionCenterY = rect.top + rect.height / 2;
+            var sectionCenterX = window.innerWidth / 2;
+
+            // Distance from light center to section center (normalized)
+            var distY = Math.abs(lightY - sectionCenterY) / viewH;
+            var distX = Math.abs(lightX - sectionCenterX) / window.innerWidth;
+            var dist = Math.sqrt(distX * distX + distY * distY);
+
+            // If the light center is close enough to this section, mark as light zone
+            if (dist < 0.45) {
+                section.classList.add('section--light-zone');
+            } else {
+                section.classList.remove('section--light-zone');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!gradientTicking) {
+            requestAnimationFrame(updateGradientOnScroll);
+            gradientTicking = true;
+        }
+    }, { passive: true });
+
+    // Initial call
+    updateGradientOnScroll();
 
 })();
