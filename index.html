@@ -45,6 +45,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- ========== SCROLL PROGRESS BAR ========== -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ========== ANIMATED AMBIENT GLOW OVERLAYS ========== -->
+    <div class="ambient-glow" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--bottom" aria-hidden="true"></div>
+
     <!-- ========== LOADER ========== -->
     <div id="loader" class="loader" aria-hidden="true">
         <div class="loader__content">
@@ -102,6 +109,50 @@
         <section id="hero" class="hero">
             <div class="hero__particles" id="hero-particles" aria-hidden="true"></div>
             <div class="hero__grid-bg" aria-hidden="true"></div>
+
+            <!-- 3D Floating Decorative Shapes -->
+            <div class="hero__3d-scene" aria-hidden="true">
+                <!-- 3D Cube top-right -->
+                <div class="float-shape float-shape--cube" style="top:15%;right:12%" data-parallax="0.3">
+                    <div class="cube-face cube-face--front"></div>
+                    <div class="cube-face cube-face--back"></div>
+                    <div class="cube-face cube-face--left"></div>
+                    <div class="cube-face cube-face--right"></div>
+                    <div class="cube-face cube-face--top"></div>
+                    <div class="cube-face cube-face--bottom"></div>
+                </div>
+                <!-- 3D Ring left -->
+                <div class="float-shape float-shape--ring" style="top:35%;left:6%" data-parallax="0.5"></div>
+                <!-- Diamond center-right -->
+                <div class="float-shape float-shape--diamond" style="top:60%;right:18%" data-parallax="0.2"></div>
+                <!-- Hexagon wireframe top-left -->
+                <div class="float-shape float-shape--hex" style="top:20%;left:15%" data-parallax="0.4">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="rgba(74,144,217,0.8)" stroke-width="1">
+                        <polygon points="50,3 93,25 93,75 50,97 7,75 7,25"/>
+                        <polygon points="50,18 78,34 78,66 50,82 22,66 22,34"/>
+                    </svg>
+                </div>
+                <!-- Glowing dots scattered -->
+                <div class="float-shape float-shape--dot" style="top:25%;right:30%" data-parallax="0.6"></div>
+                <div class="float-shape float-shape--dot" style="top:45%;left:25%" data-parallax="0.35"></div>
+                <div class="float-shape float-shape--dot" style="top:70%;right:8%" data-parallax="0.45"></div>
+                <div class="float-shape float-shape--dot" style="top:55%;left:10%" data-parallax="0.55"></div>
+                <div class="float-shape float-shape--dot" style="top:80%;left:35%" data-parallax="0.25"></div>
+                <!-- 2nd Cube smaller bottom-left -->
+                <div class="float-shape float-shape--cube" style="bottom:18%;left:20%;opacity:0.5;width:35px;height:35px" data-parallax="0.4">
+                    <div class="cube-face cube-face--front" style="width:35px;height:35px;transform:translateZ(17.5px)"></div>
+                    <div class="cube-face cube-face--back" style="width:35px;height:35px;transform:translateZ(-17.5px) rotateY(180deg)"></div>
+                    <div class="cube-face cube-face--left" style="width:35px;height:35px;transform:translateX(-17.5px) rotateY(-90deg)"></div>
+                    <div class="cube-face cube-face--right" style="width:35px;height:35px;transform:translateX(17.5px) rotateY(90deg)"></div>
+                    <div class="cube-face cube-face--top" style="width:35px;height:35px;transform:translateY(-17.5px) rotateX(90deg)"></div>
+                    <div class="cube-face cube-face--bottom" style="width:35px;height:35px;transform:translateY(17.5px) rotateX(-90deg)"></div>
+                </div>
+                <!-- 2nd Ring right side -->
+                <div class="float-shape float-shape--ring" style="bottom:25%;right:5%;width:65px;height:65px;opacity:0.4" data-parallax="0.3"></div>
+                <!-- Diamond top -->
+                <div class="float-shape float-shape--diamond" style="top:10%;left:45%;width:20px;height:20px;opacity:0.4" data-parallax="0.5"></div>
+            </div>
+
             <div class="hero__content">
                 <div class="hero__badge reveal">
                     <span class="hero__badge-dot"></span>
@@ -131,10 +182,13 @@
         </section>
 
         <!-- ========== ABOUT ========== -->
-        <section id="about" class="about section">
+        <section id="about" class="about section" data-scroll-scale>
+            <!-- Floating orbs -->
+            <div class="section__orb section__orb--blue-lg" style="top:-10%;right:-8%" aria-hidden="true"></div>
+            <div class="section__orb section__orb--blue-sm" style="bottom:5%;left:-5%" aria-hidden="true"></div>
             <div class="container">
                 <div class="about__grid">
-                    <div class="about__visual reveal">
+                    <div class="about__visual reveal-3d" data-parallax="0.15">
                         <div class="about__card-stack">
                             <div class="about__card about__card--1">
                                 <div class="about__card-icon">
@@ -191,7 +245,8 @@
         </section>
 
         <!-- ========== SERVICES ========== -->
-        <section id="services" class="services section">
+        <div class="section-divider" aria-hidden="true"></div>
+        <section id="services" class="services section" data-scroll-scale>
             <div class="container">
                 <div class="section__header">
                     <span class="section__label reveal" data-i18n="services_label">Nuestros Servicios</span>
@@ -465,7 +520,10 @@
         </section> -->
 
         <!-- ========== IMPACT / PRODUCTIVITY ========== -->
-        <section id="impact" class="impact section">
+        <div class="section-divider" aria-hidden="true"></div>
+        <section id="impact" class="impact section" data-scroll-scale>
+            <!-- Floating orbs -->
+            <div class="section__orb section__orb--blue-sm" style="top:10%;left:-6%" aria-hidden="true"></div>
             <div class="container">
                 <div class="impact__layout">
                     <div class="impact__left reveal-left">
@@ -522,7 +580,10 @@
         </section>
 
         <!-- ========== DIFFERENTIATORS ========== -->
-        <section id="differentiators" class="differentiators section">
+        <div class="section-divider" aria-hidden="true"></div>
+        <section id="differentiators" class="differentiators section" data-scroll-scale>
+            <!-- Floating orbs -->
+            <div class="section__orb section__orb--blue-lg" style="top:-5%;left:60%" aria-hidden="true"></div>
             <div class="container">
                 <div class="section__header">
                     <span class="section__label reveal" data-i18n="diff_label">Garantías</span>
@@ -569,6 +630,7 @@
         </section>
 
         <!-- ========== CTA ========== -->
+        <div class="section-divider" aria-hidden="true"></div>
         <section class="cta section">
             <div class="cta__bg" aria-hidden="true">
                 <div class="cta__orb cta__orb--1"></div>
@@ -592,7 +654,8 @@
         </section>
 
         <!-- ========== CONTACT ========== -->
-        <section id="contact" class="contact section">
+        <div class="section-divider" aria-hidden="true"></div>
+        <section id="contact" class="contact section" data-scroll-scale>
             <div class="container">
                 <div class="contact__grid">
                     <div class="contact__info">

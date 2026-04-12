@@ -77,6 +77,65 @@
 
     window.addEventListener('scroll', handleNavbarScroll, { passive: true });
 
+    // ============================================================
+    // SCROLL PROGRESS BAR
+    // ============================================================
+    var scrollProgressBar = document.getElementById('scroll-progress');
+
+    function updateScrollProgress() {
+        var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+        if (scrollProgressBar) {
+            scrollProgressBar.style.width = progress + '%';
+        }
+    }
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+
+    // ============================================================
+    // PARALLAX on data-parallax elements
+    // ============================================================
+    var parallaxElements = document.querySelectorAll('[data-parallax]');
+    var parallaxTicking = false;
+
+    function updateParallax() {
+        var scrollY = window.scrollY;
+        parallaxElements.forEach(function (el) {
+            var speed = parseFloat(el.getAttribute('data-parallax')) || 0.3;
+            var yOffset = -(scrollY * speed * 0.4);
+            el.style.transform = 'translateY(' + yOffset + 'px)';
+        });
+        parallaxTicking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!parallaxTicking) {
+            requestAnimationFrame(updateParallax);
+            parallaxTicking = true;
+        }
+    }, { passive: true });
+
+    // ============================================================
+    // SECTION SCALE-IN on scroll (data-scroll-scale)
+    // ============================================================
+    var scaleSections = document.querySelectorAll('[data-scroll-scale]');
+
+    if ('IntersectionObserver' in window && scaleSections.length) {
+        var scaleObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+        scaleSections.forEach(function (el) {
+            scaleObserver.observe(el);
+        });
+    }
+
     // Mobile menu toggle
     function toggleMobileMenu() {
         const isOpen = mobileMenu.classList.contains('open');
@@ -567,6 +626,26 @@
     }
 
     // ============================================================
+    // 3D REVEAL — Perspective entrance animations
+    // ============================================================
+    var reveal3dEls = document.querySelectorAll('.reveal-3d, .reveal-3d-right');
+
+    if ('IntersectionObserver' in window && reveal3dEls.length) {
+        var reveal3dObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    reveal3dObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+        reveal3dEls.forEach(function (el) {
+            reveal3dObserver.observe(el);
+        });
+    }
+
+    // ============================================================
     // LANGUAGE TOGGLE — ES / EN
     // ============================================================
     var currentLang = 'es';
@@ -825,85 +904,5 @@
 
     if (langToggle) langToggle.addEventListener('click', handleLangToggle);
     if (langToggleMobile) langToggleMobile.addEventListener('click', handleLangToggle);
-
-    // ============================================================
-    // SCROLL-BASED GRADIENT MOVEMENT & ADAPTIVE TEXT COLORS
-    // ============================================================
-    var gradientTicking = false;
-
-    // Sections with transparent backgrounds (affected by body gradient)
-    var transparentSections = document.querySelectorAll('#hero, #about, #differentiators, #contact');
-
-    function updateGradientOnScroll() {
-        var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var progress = scrollHeight > 0 ? Math.min(window.scrollY / scrollHeight, 1) : 0;
-
-        // X position: 50% → 15% → 50% (swings left then returns)
-        var gradX = 50 - 35 * Math.sin(progress * Math.PI);
-
-        // Y position: 0% → 100% (top to bottom)
-        var gradY = progress * 100;
-
-        document.body.style.setProperty('--gradient-x', gradX + '%');
-        document.body.style.setProperty('--gradient-y', gradY + '%');
-
-        // Adaptive text colors: check which transparent sections are near the light
-        adaptSectionColors(gradX, gradY);
-
-        // Navbar adaptation: light zone only when gradient is near top
-        if (navbar && !navbar.classList.contains('scrolled') && gradY < 25) {
-            navbar.classList.add('navbar--light-zone');
-        } else if (navbar) {
-            navbar.classList.remove('navbar--light-zone');
-        }
-
-        gradientTicking = false;
-    }
-
-    function adaptSectionColors(gradX, gradY) {
-        // The gradient light center is at (gradX%, gradY%) of the viewport
-        // The light is intense within ~25% radius of the ellipse center
-        var viewH = window.innerHeight;
-
-        transparentSections.forEach(function (section) {
-            var rect = section.getBoundingClientRect();
-
-            // Skip sections not visible
-            if (rect.bottom < -100 || rect.top > viewH + 100) {
-                section.classList.remove('section--light-zone');
-                return;
-            }
-
-            // Convert gradient Y% to viewport pixel position
-            var lightY = (gradY / 100) * viewH;
-            var lightX = (gradX / 100) * window.innerWidth;
-
-            // Section center in viewport
-            var sectionCenterY = rect.top + rect.height / 2;
-            var sectionCenterX = window.innerWidth / 2;
-
-            // Distance from light center to section center (normalized)
-            var distY = Math.abs(lightY - sectionCenterY) / viewH;
-            var distX = Math.abs(lightX - sectionCenterX) / window.innerWidth;
-            var dist = Math.sqrt(distX * distX + distY * distY);
-
-            // If the light center is close enough to this section, mark as light zone
-            if (dist < 0.45) {
-                section.classList.add('section--light-zone');
-            } else {
-                section.classList.remove('section--light-zone');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', function () {
-        if (!gradientTicking) {
-            requestAnimationFrame(updateGradientOnScroll);
-            gradientTicking = true;
-        }
-    }, { passive: true });
-
-    // Initial call
-    updateGradientOnScroll();
 
 })();

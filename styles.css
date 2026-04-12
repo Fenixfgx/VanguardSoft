@@ -82,10 +82,25 @@ html {
 body {
     font-family: var(--font-family);
     background: #000000;
-    --gradient-x: 50%;
-    --gradient-y: 0%;
     background-image:
-        radial-gradient(ellipse 120% 60% at var(--gradient-x) var(--gradient-y), #E8EDF2 0%, #B8CCE0 8%, #4A6FA5 18%, #1B2A4A 32%, #0D1520 48%, #060A10 62%, #000000 80%);
+        /* Primary top-left corner glow — intense, luxurious, off-screen source */
+        radial-gradient(ellipse 190% 190% at -5% -8%,
+            rgba(215, 230, 255, 0.52) 0%,
+            rgba(160, 205, 245, 0.30) 15%,
+            rgba(74, 144, 217, 0.18) 30%,
+            rgba(40, 75, 140, 0.07) 45%,
+            transparent 62%),
+        /* Secondary bloom — warmth diffusion */
+        radial-gradient(ellipse 260% 170% at 12% 10%,
+            rgba(74, 144, 217, 0.16) 0%,
+            rgba(50, 100, 180, 0.08) 25%,
+            transparent 50%),
+        /* Bottom ambient glow — bleeds upward into footer zone */
+        radial-gradient(ellipse 180% 110% at 50% 112%,
+            rgba(180, 215, 255, 0.36) 0%,
+            rgba(74, 144, 217, 0.20) 20%,
+            rgba(40, 70, 140, 0.07) 40%,
+            transparent 62%);
     background-attachment: fixed;
     color: var(--color-text-primary);
     line-height: 1.6;
@@ -1480,8 +1495,10 @@ input, textarea {
    ---------------------------------------------------------------- */
 .footer {
     padding: 80px 0 40px;
-    border-top: 1px solid rgba(74, 144, 217, 0.08);
-    background: linear-gradient(180deg, #030508 0%, #000000 100%);
+    border-top: 1px solid rgba(74, 144, 217, 0.10);
+    background: rgba(3, 5, 10, 0.45);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
     color: #F0F0F0;
 }
 
@@ -1982,117 +1999,304 @@ input, textarea {
 }
 
 /* ----------------------------------------------------------------
-   SCROLL-ADAPTIVE TEXT COLORS (light zone detection)
+   SCROLL PROGRESS BAR
    ---------------------------------------------------------------- */
-.hero__title,
-.hero__subtitle,
-.hero__badge,
-.hero__stat-label,
-.section__title,
-.section__desc,
-.section__label,
-.about__text,
-.about__highlight,
-.contact__text,
-.contact__detail,
-.navbar__name,
-.navbar__link {
-    transition: color 0.5s ease;
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, #4A90D9, #7EB4E8, #4A90D9);
+    z-index: 10001;
+    box-shadow: 0 0 12px rgba(74, 144, 217, 0.6), 0 0 4px rgba(126, 180, 232, 0.4);
+    border-radius: 0 1px 1px 0;
 }
 
-.hero__badge {
-    transition: color 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+/* ----------------------------------------------------------------
+   ANIMATED AMBIENT GLOW OVERLAY
+   ---------------------------------------------------------------- */
+.ambient-glow {
+    position: fixed;
+    top: -30%;
+    left: -20%;
+    width: 180%;
+    height: 180%;
+    background: radial-gradient(ellipse at center,
+        rgba(74, 144, 217, 0.12) 0%,
+        rgba(110, 180, 245, 0.06) 35%,
+        transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: ambientBreathe 10s ease-in-out infinite;
 }
 
-.about__highlight {
-    transition: color 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+.ambient-glow--bottom {
+    top: auto;
+    left: auto;
+    bottom: -25%;
+    right: -8%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(ellipse at center,
+        rgba(74, 144, 217, 0.10) 0%,
+        rgba(130, 190, 245, 0.05) 40%,
+        transparent 70%);
+    animation: ambientBreathe 12s ease-in-out infinite reverse;
 }
 
-/* When a section overlaps the gradient light zone */
-.section--light-zone .hero__title {
-    color: #1A2744;
+@keyframes ambientBreathe {
+    0%, 100% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+    33% { opacity: 1; transform: scale(1.1) translate(12px, -10px); }
+    66% { opacity: 0.8; transform: scale(1.05) translate(-6px, 6px); }
 }
 
-.section--light-zone .hero__subtitle {
-    color: #3A4F6A;
+/* ----------------------------------------------------------------
+   3D FLOATING SHAPES — Hero decorative elements
+   ---------------------------------------------------------------- */
+.hero__3d-scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.section--light-zone .hero__badge {
-    color: #1B3A5C;
-    background: rgba(74, 144, 217, 0.18);
-    border-color: rgba(74, 144, 217, 0.4);
+.float-shape {
+    position: absolute;
+    will-change: transform;
 }
 
-.section--light-zone .hero__stat-label {
-    color: #3A4F6A;
+/* 3D Cube */
+.float-shape--cube {
+    width: 50px;
+    height: 50px;
+    transform-style: preserve-3d;
+    animation: floatRotateCube 25s linear infinite;
 }
 
-.section--light-zone .section__title {
-    color: #1A2744;
+.float-shape--cube .cube-face {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(74, 144, 217, 0.12);
+    background: rgba(74, 144, 217, 0.02);
+    backdrop-filter: blur(1px);
 }
 
-.section--light-zone .text--gradient,
-.section--light-zone .hero__title--gradient {
-    background: linear-gradient(135deg, #0D1B2A 0%, #2A6AAA 50%, #4A90D9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.cube-face--front  { transform: translateZ(25px); }
+.cube-face--back   { transform: translateZ(-25px) rotateY(180deg); }
+.cube-face--left   { transform: translateX(-25px) rotateY(-90deg); }
+.cube-face--right  { transform: translateX(25px) rotateY(90deg); }
+.cube-face--top    { transform: translateY(-25px) rotateX(90deg); }
+.cube-face--bottom { transform: translateY(25px) rotateX(-90deg); }
+
+@keyframes floatRotateCube {
+    0%   { transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: translateY(-15px) rotateX(360deg) rotateY(360deg) rotateZ(180deg); }
 }
 
-.section--light-zone .section__desc {
-    color: #3A4F6A;
+/* 3D Ring */
+.float-shape--ring {
+    width: 100px;
+    height: 100px;
+    border: 1.5px solid rgba(74, 144, 217, 0.10);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    animation: floatRing 18s ease-in-out infinite;
 }
 
-.section--light-zone .section__label {
-    color: #1B4F8A;
+@keyframes floatRing {
+    0%, 100% { transform: translateY(0) rotateX(65deg) rotateZ(0deg); opacity: 0.6; }
+    50% { transform: translateY(-25px) rotateX(65deg) rotateZ(180deg); opacity: 1; }
 }
 
-.section--light-zone .about__text {
-    color: #3A4F6A;
+/* Glowing dot */
+.float-shape--dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(74, 144, 217, 0.35);
+    box-shadow: 0 0 12px rgba(74, 144, 217, 0.3), 0 0 40px rgba(74, 144, 217, 0.1);
+    animation: floatDot 12s ease-in-out infinite;
 }
 
-.section--light-zone .about__highlight {
-    color: #1A2744;
-    background: rgba(74, 144, 217, 0.15);
-    border-color: rgba(74, 144, 217, 0.35);
+.float-shape--dot:nth-child(even) {
+    animation-duration: 16s;
+    animation-direction: reverse;
 }
 
-.section--light-zone .about__highlight-icon {
-    color: #1B4F8A;
-    background: rgba(74, 144, 217, 0.2);
+@keyframes floatDot {
+    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+    25% { transform: translate(15px, -20px); opacity: 0.9; }
+    50% { transform: translate(-10px, -35px); opacity: 0.5; }
+    75% { transform: translate(20px, -15px); opacity: 0.8; }
 }
 
-.section--light-zone .contact__text,
-.section--light-zone .contact__detail {
-    color: #3A4F6A;
+/* Hexagon wireframe */
+.float-shape--hex {
+    width: 70px;
+    height: 70px;
+    opacity: 0.15;
+    animation: floatHex 22s ease-in-out infinite;
 }
 
-.section--light-zone .contact__detail-icon {
-    color: #1B4F8A;
-    background: rgba(74, 144, 217, 0.2);
+.float-shape--hex svg {
+    width: 100%;
+    height: 100%;
 }
 
-/* Navbar adaptation when at top (light zone) */
-.navbar--light-zone .navbar__name {
-    color: #1A2744;
+@keyframes floatHex {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    33% { transform: translateY(-20px) rotate(60deg) scale(1.05); }
+    66% { transform: translateY(-10px) rotate(120deg) scale(0.95); }
 }
 
-.navbar--light-zone .navbar__name--accent {
-    color: #1B4F8A;
+/* Diamond / Prism */
+.float-shape--diamond {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(74, 144, 217, 0.14);
+    background: rgba(74, 144, 217, 0.03);
+    transform-origin: center;
+    animation: floatDiamond 20s ease-in-out infinite;
 }
 
-.navbar--light-zone .navbar__link {
-    color: #3A4F6A;
+@keyframes floatDiamond {
+    0%, 100% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0.5; }
+    50% { transform: rotate(45deg) translateY(-30px) scale(1.1); opacity: 0.9; }
 }
 
-.navbar--light-zone .navbar__link:hover,
-.navbar--light-zone .navbar__link.active {
-    color: #1A2744;
+/* ----------------------------------------------------------------
+   GRADIENT SECTION DIVIDERS
+   ---------------------------------------------------------------- */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 5%,
+        rgba(74, 144, 217, 0.12) 30%,
+        rgba(126, 180, 232, 0.18) 50%,
+        rgba(74, 144, 217, 0.12) 70%,
+        transparent 95%);
+    margin: 0;
+    position: relative;
 }
 
-.navbar--light-zone .navbar__logo {
-    background: #1A2744;
-    color: #E8EDF2;
+.section-divider::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 9px;
+    background: radial-gradient(ellipse at center, rgba(74, 144, 217, 0.08), transparent 70%);
+    filter: blur(2px);
+}
+
+/* ----------------------------------------------------------------
+   CARD SHIMMER SWEEP — Premium hover micro-interaction
+   ---------------------------------------------------------------- */
+.service-card::after,
+.diff-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(74, 144, 217, 0.06) 45%,
+        rgba(126, 180, 232, 0.08) 50%,
+        rgba(74, 144, 217, 0.06) 55%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+    transition: left 0s 0s;
+}
+
+.service-card:hover::after,
+.diff-card:hover::after {
+    left: 150%;
+    transition: left 0.75s ease;
+}
+
+/* ----------------------------------------------------------------
+   FLOATING DECORATION ORBS — Per section
+   ---------------------------------------------------------------- */
+.section__orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(90px);
+}
+
+.section__orb--blue-lg {
+    width: 350px;
+    height: 350px;
+    background: rgba(74, 144, 217, 0.05);
+    animation: orbDrift 14s ease-in-out infinite;
+}
+
+.section__orb--blue-sm {
+    width: 200px;
+    height: 200px;
+    background: rgba(126, 180, 232, 0.04);
+    animation: orbDrift 18s ease-in-out infinite reverse;
+}
+
+@keyframes orbDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(25px, -18px) scale(1.05); }
+    66% { transform: translate(-15px, 12px) scale(0.97); }
+}
+
+/* ----------------------------------------------------------------
+   3D REVEAL ANIMATIONS — Perspective entrance
+   ---------------------------------------------------------------- */
+.reveal-3d {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-6deg) translateX(-40px) translateZ(-30px);
+    transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+}
+
+.reveal-3d.revealed {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg) translateX(0) translateZ(0);
+}
+
+.reveal-3d-right {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(6deg) translateX(40px) translateZ(-30px);
+    transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+}
+
+.reveal-3d-right.revealed {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg) translateX(0) translateZ(0);
+}
+
+/* ----------------------------------------------------------------
+   PARALLAX LAYERS
+   ---------------------------------------------------------------- */
+[data-parallax] {
+    will-change: transform;
+}
+
+/* ----------------------------------------------------------------
+   SCROLL-DRIVEN SECTION SCALING — Sections grow slightly on enter
+   ---------------------------------------------------------------- */
+.section[data-scroll-scale] {
+    transform: scale(0.97);
+    transition: transform 0.6s var(--ease-out-expo);
+}
+
+.section[data-scroll-scale].in-view {
+    transform: scale(1);
 }
 
 /* ----------------------------------------------------------------
@@ -2162,6 +2366,16 @@ input, textarea {
     :root {
         --section-padding: 48px;
         --container-padding: 20px;
+    }
+
+    .hero__3d-scene {
+        display: none;
+    }
+
+    .float-shape--cube,
+    .float-shape--ring,
+    .float-shape--hex {
+        display: none;
     }
 
     .navbar__links {
@@ -2306,8 +2520,15 @@ input, textarea {
         scroll-behavior: auto;
     }
 
-    .reveal {
+    .reveal,
+    .reveal-3d,
+    .reveal-3d-right {
         opacity: 1;
         transform: none;
+    }
+
+    .hero__3d-scene,
+    .ambient-glow {
+        display: none;
     }
 }
