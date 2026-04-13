@@ -448,9 +448,42 @@
     // ============================================================
     // CONTACT FORM — Simulation
     // ============================================================
+    // EmailJS initialization
+    // ============================================================
+    var hasEmailJS = typeof window.emailjs !== 'undefined' && typeof window.emailjs.init === 'function';
+    if (hasEmailJS) {
+        window.emailjs.init('6s-yCBvibuDa_tGXU');
+    }
+
+    // ============================================================
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
     const formSuccess = document.getElementById('form-success');
+    const contactFormWrapper = document.querySelector('.contact__form-wrapper');
+
+    // Ensure form success is hidden on load
+    if (formSuccess) {
+        formSuccess.setAttribute('hidden', '');
+    }
+
+    if (contactFormWrapper && window.matchMedia('(pointer: fine)').matches) {
+        contactFormWrapper.addEventListener('mousemove', function (e) {
+            var rect = contactFormWrapper.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            contactFormWrapper.style.setProperty('--glow-x', x + 'px');
+            contactFormWrapper.style.setProperty('--glow-y', y + 'px');
+            contactFormWrapper.classList.add('is-glowing');
+        });
+
+        contactFormWrapper.addEventListener('mouseenter', function () {
+            contactFormWrapper.classList.add('is-glowing');
+        });
+
+        contactFormWrapper.addEventListener('mouseleave', function () {
+            contactFormWrapper.classList.remove('is-glowing');
+        });
+    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
@@ -462,6 +495,7 @@
             // Get values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const country = document.getElementById('country').value.trim();
             const message = document.getElementById('message').value.trim();
 
             // Validate
@@ -477,6 +511,11 @@
                 isValid = false;
             }
 
+            if (!country) {
+                showFieldError('country', 'Por favor, escribe tu país.');
+                isValid = false;
+            }
+
             if (!message || message.length < 10) {
                 showFieldError('message', 'El mensaje debe tener al menos 10 caracteres.');
                 isValid = false;
@@ -484,25 +523,47 @@
 
             if (!isValid) return;
 
-            // Simulate submission
+            // Send with EmailJS
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
-            setTimeout(function () {
+            if (hasEmailJS && typeof window.emailjs.send === 'function') {
+                window.emailjs.send('default_service', 'contact_form_template', {
+                    from_name: name,
+                    from_email: email,
+                    country: country,
+                    message: message,
+                    to_email: 'info@vanguardsoft.co'
+                }).then(function () {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    contactForm.reset();
+                    formSuccess.hidden = false;
+
+                    setTimeout(function () {
+                        formSuccess.hidden = true;
+                    }, 5000);
+                }, function (error) {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                    console.error('EmailJS error:', error);
+                    showFieldError('message', 'Error al enviar. Intenta nuevamente.');
+                });
+            } else {
+                // Fallback to avoid breaking UX if EmailJS script is blocked
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
                 contactForm.reset();
                 formSuccess.hidden = false;
 
-                // Hide success after 5s
                 setTimeout(function () {
                     formSuccess.hidden = true;
                 }, 5000);
-            }, 1500);
+            }
         });
 
         // Real-time validation on blur
-        ['name', 'email', 'message'].forEach(function (fieldId) {
+        ['name', 'email', 'country', 'message'].forEach(function (fieldId) {
             var field = document.getElementById(fieldId);
             field.addEventListener('blur', function () {
                 clearFieldError(fieldId);
@@ -513,6 +574,9 @@
                 }
                 if (fieldId === 'email' && value && !isValidEmail(value)) {
                     showFieldError('email', 'Email no válido.');
+                }
+                if (fieldId === 'country' && !value) {
+                    showFieldError('country', 'Escribe tu país.');
                 }
                 if (fieldId === 'message' && value && value.length < 10) {
                     showFieldError('message', 'El mensaje es muy corto.');
@@ -545,7 +609,7 @@
     }
 
     function clearFormErrors() {
-        ['name', 'email', 'message'].forEach(function (id) {
+        ['name', 'email', 'country', 'message'].forEach(function (id) {
             clearFieldError(id);
         });
     }
@@ -648,7 +712,22 @@
     // ============================================================
     // LANGUAGE TOGGLE — ES / EN
     // ============================================================
+    // Detect language based on geolocation and browser locale
     var currentLang = 'es';
+    
+    function detectLanguageByLocation() {
+        var browserLang = navigator.language || navigator.userLanguage;
+        var baseLang = browserLang.split('-')[0].toLowerCase();
+        var initialLang = (baseLang === 'en' ? 'en' : 'es');
+        
+        // Set language based on browser first (no blocking)
+        if (initialLang !== currentLang) {
+            setLanguage(initialLang);
+        }
+    }
+    
+    // Auto-detect on page load
+    detectLanguageByLocation();
 
     var translations = {
         en: {
@@ -660,21 +739,21 @@
             // Hero
             hero_badge: 'Custom software for businesses',
             hero_title: 'Your operation, optimized.<br><span class="hero__title--gradient">Your software, custom-built.</span>',
-            hero_subtitle: 'We develop software, automate processes and build mobile apps that cut operational costs and scale with your business.',
-            hero_cta_primary: 'Book a free consultation',
+            hero_subtitle: 'We develop solutions to increase your company\'s productivity, with multiplatform systems for desktop, web and mobile.',
+            hero_cta_primary: 'Schedule your consultation',
             hero_cta_secondary: 'View services',
             hero_stat_projects: 'Projects',
             hero_stat_clients: 'Clients',
             hero_stat_satisfaction: 'Satisfaction',
             // About
-            about_card1: 'Python Backend',
+            about_card1: 'Multiplatform Software',
             about_card2: 'Process Automation',
-            about_card3: 'Flutter Apps',
+            about_card3: 'Mobile apps, desktop software and web platforms',
             about_label: 'About Us',
             about_title: 'Software with purpose.<br><span class="text--gradient">Results you can measure.</span>',
-            about_text1: 'Led by David, a developer specialized in Python, Flutter and business automation. At VanguardSoft we don\'t sell tech for trends: we analyze your operation, find bottlenecks and build the exact software you need.',
+            about_text1: 'At VanguardSoft, we specialize in multiplatform software and business automation. We do not sell technology for trends: we analyze your operation, find bottlenecks and build the exact software you need.',
             about_h1: 'Faster processes, lower costs',
-            about_h2: 'Python, Flutter & APIs',
+            about_h2: 'Mobile, desktop and web apps',
             about_h3: 'Direct access to the developer',
             // Services
             services_label: 'Our Services',
@@ -685,7 +764,7 @@
             svc2_title: 'Custom Software',
             svc2_desc: 'Using spreadsheets or generic tools that don\'t fit? We build the exact system your operation needs, integrated with your real processes.',
             svc3_title: 'Cross-platform Apps',
-            svc3_desc: 'Need an app for iOS and Android without doubling costs? With Flutter, we build one app that runs on every platform.',
+            svc3_desc: 'Need an app for iOS and Android without doubling costs? We build one multiplatform codebase that runs on every platform.',
             svc4_title: 'Process Automation',
             svc4_desc: 'Is your team wasting hours on repetitive tasks? We automate workflows, connect systems and free up time for what matters.',
             svc5_title: 'Systems Integration',
@@ -735,17 +814,19 @@
             // CTA
             cta_title: 'Ready to optimize<br><span class="text--gradient">your operation?</span>',
             cta_desc: 'Tell us the problem you want to solve. Within 24 hours we\'ll tell you how we can help \u2014 no strings attached.',
-            cta_btn: 'Request free consultation',
+            cta_btn: 'Request consultation',
             // Contact
             contact_label: 'Contact',
             contact_title: 'Tell us your challenge.<br><span class="text--gradient">We\'ll propose a solution.</span>',
             contact_text: 'Fill out the form with your project details. We respond within 24 hours with a clear proposal, no commitment required.',
-            contact_email: 'contacto@vanguardsoft.com',
-            contact_location: 'Remote \u2014 Global',
+            contact_email: 'info@vanguardsoft.co',
+            contact_location: 'Remote — Global',
             form_name: 'Name',
-            form_name_ph: 'Your full name',
+            form_name_ph: 'Your name or your company name',
             form_email: 'Email',
             form_email_ph: 'you@email.com',
+            form_country: 'Country',
+            form_country_ph: 'Tell us your country',
             form_message: 'Message',
             form_message_ph: 'Tell us about your project...',
             form_submit: 'Send message',
@@ -765,20 +846,20 @@
             nav_contact: 'Contacto',
             hero_badge: 'Software a medida para empresas',
             hero_title: 'Tu operaci\u00f3n, optimizada.<br><span class="hero__title--gradient">Tu software, a medida.</span>',
-            hero_subtitle: 'Desarrollamos software, automatizamos procesos y creamos aplicaciones m\u00f3viles que reducen costos operativos y escalan con tu negocio.',
-            hero_cta_primary: 'Agenda una asesor\u00eda gratis',
+            hero_subtitle: 'Desarrollamos soluciones para aumentar la productividad de tu empresa, con sistemas multiplataforma para escritorio, web y m\u00f3vil.',
+            hero_cta_primary: 'Agenda tu asesor\u00eda',
             hero_cta_secondary: 'Ver servicios',
             hero_stat_projects: 'Proyectos',
             hero_stat_clients: 'Clientes',
             hero_stat_satisfaction: 'Satisfacci\u00f3n',
-            about_card1: 'Backend en Python',
+            about_card1: 'Software Multiplataforma',
             about_card2: 'Automatizaci\u00f3n de Procesos',
-            about_card3: 'Apps con Flutter',
+            about_card3: 'Apps m\u00f3viles, escritorio y plataformas web',
             about_label: 'Sobre Nosotros',
             about_title: 'Software con prop\u00f3sito.<br><span class="text--gradient">Resultados que se miden.</span>',
-            about_text1: 'Liderado por David, desarrollador especializado en Python, Flutter y automatizaci\u00f3n empresarial. En VanguardSoft no vendemos tecnolog\u00eda por moda: analizamos tu operaci\u00f3n, identificamos cuellos de botella y construimos el software exacto que necesitas.',
+            about_text1: 'En VanguardSoft nos especializamos en software multiplataforma y automatizaci\u00f3n empresarial. No vendemos tecnolog\u00eda por moda: analizamos tu operaci\u00f3n, identificamos cuellos de botella y construimos el software exacto que necesitas.',
             about_h1: 'Procesos m\u00e1s r\u00e1pidos, costos m\u00e1s bajos',
-            about_h2: 'Python, Flutter y APIs',
+            about_h2: 'Apps m\u00f3viles, escritorio y web',
             about_h3: 'Trato directo con el desarrollador',
             services_label: 'Nuestros Servicios',
             services_title: 'Lo que hacemos por<br><span class="text--gradient">tu negocio</span>',
@@ -788,7 +869,7 @@
             svc2_title: 'Software a Medida',
             svc2_desc: '\u00bfUsas Excel o herramientas gen\u00e9ricas que no encajan? Desarrollamos el sistema exacto que tu operaci\u00f3n necesita, integrado con tus procesos reales.',
             svc3_title: 'Apps Multiplataforma',
-            svc3_desc: '\u00bfNecesitas una app que funcione en iOS y Android sin duplicar costos? Con Flutter, desarrollamos una sola app que corre en todas las plataformas.',
+            svc3_desc: '\u00bfNecesitas una app que funcione en iOS y Android sin duplicar costos? Desarrollamos una sola base multiplataforma que corre en todas las plataformas.',
             svc4_title: 'Automatizaci\u00f3n de Procesos',
             svc4_desc: '\u00bfTu equipo pierde horas en tareas repetitivas? Automatizamos flujos de trabajo, conectamos sistemas y liberamos tiempo para lo que importa.',
             svc5_title: 'Integraci\u00f3n de Sistemas',
@@ -834,16 +915,18 @@
             diff4_desc: 'No desaparecemos al entregar. Mantenimiento, ajustes y soporte continuo para que tu software siempre funcione.',
             cta_title: '\u00bfListo para optimizar<br><span class="text--gradient">tu operaci\u00f3n?</span>',
             cta_desc: 'Cu\u00e9ntanos qu\u00e9 problema quieres resolver. En 24 horas te decimos c\u00f3mo podemos ayudarte \u2014 sin compromiso.',
-            cta_btn: 'Solicitar asesor\u00eda gratuita',
+            cta_btn: 'Solicitar asesor\u00eda',
             contact_label: 'Contacto',
             contact_title: 'Cu\u00e9ntanos tu reto.<br><span class="text--gradient">Te proponemos una soluci\u00f3n.</span>',
             contact_text: 'Completa el formulario con los detalles de tu proyecto. Respondemos en menos de 24 horas con una propuesta clara y sin compromiso.',
-            contact_email: 'contacto@vanguardsoft.com',
-            contact_location: 'Remoto \u2014 Global',
+            contact_email: 'info@vanguardsoft.co',
+            contact_location: 'Remoto — Global',
             form_name: 'Nombre',
-            form_name_ph: 'Tu nombre completo',
+            form_name_ph: 'Tu nombre o el de tu empresa',
             form_email: 'Email',
             form_email_ph: 'tu@email.com',
+            form_country: 'País',
+            form_country_ph: 'Dinos tu país',
             form_message: 'Mensaje',
             form_message_ph: 'Cu\u00e9ntanos sobre tu proyecto...',
             form_submit: 'Enviar mensaje',
