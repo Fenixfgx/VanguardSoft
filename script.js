@@ -450,9 +450,16 @@
     // ============================================================
     // EmailJS initialization
     // ============================================================
-    var hasEmailJS = typeof window.emailjs !== 'undefined' && typeof window.emailjs.init === 'function';
+    var emailjsClient = null;
+    if (window.emailjs && typeof window.emailjs.init === 'function') {
+        emailjsClient = window.emailjs;
+    } else if (window.emailjs && window.emailjs.default && typeof window.emailjs.default.init === 'function') {
+        emailjsClient = window.emailjs.default;
+    }
+
+    var hasEmailJS = !!emailjsClient;
     if (hasEmailJS) {
-        window.emailjs.init('6s-yCBvibuDa_tGXU');
+        emailjsClient.init('6s-yCBvibuDa_tGXU');
     }
 
     // ============================================================
@@ -527,11 +534,15 @@
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
-            if (hasEmailJS && typeof window.emailjs.send === 'function') {
-                window.emailjs.send('default_service', 'contact_form_template', {
+            if (hasEmailJS && typeof emailjsClient.send === 'function') {
+                emailjsClient.send('service_0zhvwti', 'template_xvyg2wl', {
+                    name: name,
+                    email: email,
                     from_name: name,
                     from_email: email,
+                    reply_to: email,
                     country: country,
+                    time: new Date().toLocaleString('es-CO', { hour12: false }),
                     message: message,
                     to_email: 'info@vanguardsoft.co'
                 }).then(function () {
@@ -547,18 +558,14 @@
                     submitBtn.classList.remove('loading');
                     submitBtn.disabled = false;
                     console.error('EmailJS error:', error);
-                    showFieldError('message', 'Error al enviar. Intenta nuevamente.');
+                    showFieldError('message', 'No se pudo enviar el mensaje. Verifica la configuración de EmailJS y vuelve a intentar.');
                 });
             } else {
-                // Fallback to avoid breaking UX if EmailJS script is blocked
+                // Do not show fake success if EmailJS is unavailable.
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
-                contactForm.reset();
-                formSuccess.hidden = false;
-
-                setTimeout(function () {
-                    formSuccess.hidden = true;
-                }, 5000);
+                console.error('EmailJS is not available. The script may be blocked or not loaded.');
+                showFieldError('message', 'Servicio de envío no disponible. Revisa EmailJS (Public Key, Service ID y Template ID).');
             }
         });
 
