@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | VanguardSoft</title>
+    <meta name="description" content="Pagina no encontrada en VanguardSoft.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://www.vanguardsoft.co/404.html">
+    <meta property="og:title" content="404 | VanguardSoft">
+    <meta property="og:description" content="La pagina que buscas no existe o fue movida.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.vanguardsoft.co/404.html">
+    <meta property="og:image" content="https://www.vanguardsoft.co/assets/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="404 | VanguardSoft">
+    <meta name="twitter:description" content="La pagina que buscas no existe o fue movida.">
+    <meta name="twitter:image" content="https://www.vanguardsoft.co/assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <meta name="theme-color" content="#1B2A4A">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .error-page {
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-page__card {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 42px 30px;
+            background: rgba(14, 20, 32, 0.65);
+            border: 1px solid rgba(74, 144, 217, 0.14);
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), 0 0 44px rgba(74, 144, 217, 0.08);
+        }
+
+        .error-page__logo {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 22px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(74, 144, 217, 0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-page__logo img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+        }
+
+        .error-page__code {
+            font-size: clamp(3rem, 10vw, 5.6rem);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin-bottom: 10px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-page__title {
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .error-page__desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #D8E3F0;
+            max-width: 620px;
+            margin: 0 auto 26px;
+        }
+
+        .error-page__actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 640px) {
+            .error-page__card {
+                padding: 30px 20px;
+            }
+
+            .error-page__actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--bottom" aria-hidden="true"></div>
+
+    <main class="error-page">
+        <div class="container">
+            <section class="error-page__card" aria-labelledby="error-title">
+                <div class="error-page__logo" aria-hidden="true">
+                    <img src="assets/logo.png" alt="">
+                </div>
+                <p class="error-page__code">404</p>
+                <h1 id="error-title" class="error-page__title">Pagina no encontrada</h1>
+                <p class="error-page__desc">
+                    La URL que intentas visitar no existe o fue movida. Puedes volver al inicio y seguir navegando en VanguardSoft.
+                </p>
+                <div class="error-page__actions">
+                    <a class="btn btn--primary" href="/">Volver al inicio</a>
+                    <a class="btn btn--ghost" href="/#contact">Ir a contacto</a>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
