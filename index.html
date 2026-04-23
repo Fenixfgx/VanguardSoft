@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VanguardSoft | Software a Medida y Automatización</title>
     <meta name="description" content="Desarrollo de software a medida, automatización de procesos, apps móviles y integración de sistemas. Reducimos costos operativos y escalamos tu negocio.">
-    <meta name="keywords" content="desarrollo de software a medida, automatización de procesos, desarrollo de aplicaciones móviles, empresa de software, integración de sistemas, software empresarial, VanguardSoft">
+    <meta name="keywords" content="VanguardSoft, Vanguard Soft, vanguard software, vanguard soft colombia, desarrollo de software a medida, automatización de procesos, software a la medida, desarrollo de aplicaciones móviles, empresa de software colombia, integración de sistemas, software empresarial, apps móviles empresariales, automatización empresarial">
     <meta name="author" content="Vanguard Soft">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -28,7 +28,13 @@
     <meta name="twitter:title" content="VanguardSoft | Software a Medida y Automatización">
     <meta name="twitter:description" content="Desarrollo de software a medida, automatización de procesos y apps móviles. Reducimos costos y escalamos tu negocio.">
     <meta name="twitter:image" content="https://www.vanguardsoft.co/assets/logo.png">
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="shortcut icon" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <meta name="application-name" content="VanguardSoft">
+    <meta name="msapplication-TileImage" content="https://www.vanguardsoft.co/assets/logo.png">
+    <meta name="msapplication-TileColor" content="#1B2A4A">
     <meta name="theme-color" content="#1B2A4A">
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -39,14 +45,82 @@
                 "@type": "Organization",
                 "@id": "https://www.vanguardsoft.co/#organization",
                 "name": "Vanguard Soft",
+                "alternateName": ["VanguardSoft", "Vanguard Software", "Vanguard Soft Colombia"],
                 "url": "https://www.vanguardsoft.co/",
-                "logo": "https://www.vanguardsoft.co/assets/logo.png",
-                "description": "Empresa de software especializada en desarrollo a medida, automatización de procesos empresariales, aplicaciones móviles e integración de sistemas.",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.vanguardsoft.co/assets/logo.png",
+                    "width": 512,
+                    "height": 512
+                },
+                "image": "https://www.vanguardsoft.co/assets/logo.png",
+                "description": "VanguardSoft (Vanguard Soft) es una empresa colombiana de desarrollo de software a medida, automatización de procesos empresariales, aplicaciones móviles multiplataforma e integración de sistemas. Ayudamos a empresas a reducir costos operativos y escalar su operación con tecnología hecha a la medida.",
+                "foundingLocation": {
+                    "@type": "Place",
+                    "name": "Colombia"
+                },
+                "areaServed": ["Colombia", "América Latina"],
+                "knowsAbout": [
+                    "Desarrollo de software a medida",
+                    "Automatización de procesos empresariales",
+                    "Aplicaciones móviles multiplataforma",
+                    "Desarrollo web profesional",
+                    "Integración de sistemas y APIs",
+                    "Software ERP y CRM",
+                    "Aplicaciones Android e iOS",
+                    "Software empresarial personalizado"
+                ],
                 "contactPoint": {
                     "@type": "ContactPoint",
                     "email": "info@vanguardsoft.co",
                     "contactType": "customer service",
                     "availableLanguage": ["Spanish", "English"]
+                },
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Servicios de Software",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Desarrollo Web",
+                                "description": "Sitios y plataformas web profesionales: landing pages, e-commerce y web apps que captan clientes."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Software a Medida",
+                                "description": "Sistemas personalizados: ERP, CRM, dashboards y herramientas de gestión adaptadas a los procesos reales del cliente."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Apps Multiplataforma",
+                                "description": "Aplicaciones móviles y de escritorio cross-platform para iOS, Android y Windows desde una sola base de código."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Automatización de Procesos",
+                                "description": "Automatización de flujos de trabajo, bots y workflows para aumentar la productividad empresarial."
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Integración de Sistemas",
+                                "description": "Conexión de plataformas, APIs REST, webhooks y pipelines ETL para flujos de información sin intervención manual."
+                            }
+                        }
+                    ]
                 },
                 "sameAs": []
             },
@@ -58,6 +132,14 @@
                 "inLanguage": ["es", "en"],
                 "publisher": {
                     "@id": "https://www.vanguardsoft.co/#organization"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://www.vanguardsoft.co/?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
                 }
             }
         ]
